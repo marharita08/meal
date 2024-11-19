@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import { useAllRecipes } from "./hooks/use-all-recipes.hook";
 import RecipeCard from "../../components/recipe-card/recipe-card";
+import { Loader } from "../../components/loader/loader";
+import { ErrorDisplay } from "../../components/error/error-display";
 import styles from "./recipes.module.css";
 
 const Recipes: React.FC = () => {
@@ -14,17 +16,19 @@ const Recipes: React.FC = () => {
   const paginatedItems = recipes?.slice(startIndex, endIndex);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <ErrorDisplay message={error.message} />;
   }
 
   return (
-    <div>
+    <div className={styles.recipesContainer}>
       <div className={styles.recipes}>
-        {paginatedItems?.map(recipe => <RecipeCard meal={recipe} key={recipe.idMeal}/>)}
+        {paginatedItems?.map(recipe => (
+          <RecipeCard meal={recipe} key={recipe.idMeal} />
+        ))}
       </div>
 
       {recipes && (

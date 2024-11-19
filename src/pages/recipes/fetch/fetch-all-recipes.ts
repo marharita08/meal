@@ -3,7 +3,9 @@ import { envConfig } from "../../../configs/env.config";
 
 const fetchRecipesByLetter = async (letter: string): Promise<Meal[]> => {
   const response = await fetch(`${envConfig.apiUrl}search.php?f=${letter}`);
-  if (!response.ok) throw new Error("Failed to fetch");
+  if (!response.ok) {
+    throw new Error("Failed to fetch");
+  }
 
   const data = await response.json();
 
