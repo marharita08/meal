@@ -5,6 +5,7 @@ import { ErrorDisplay } from "../../components/error/error-display";
 import { Pagination } from "../../components/pagination/pagination";
 import { usePagination } from "./hooks/use-pagination.hook";
 import styles from "./recipes.module.css";
+import { Link } from "react-router-dom";
 
 const Recipes: React.FC = () => {
   const { data: recipes, isLoading, error } = useAllRecipes();
@@ -30,6 +31,7 @@ const Recipes: React.FC = () => {
 
   return (
     <div className={styles.recipesContainer}>
+      <Link to={"/cart"}> Go to cart</Link>
       <div className={styles.recipes}>
         {paginatedItems?.map(recipe => (
           <RecipeCard meal={recipe} key={recipe.idMeal} />
