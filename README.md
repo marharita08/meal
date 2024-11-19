@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+# Recipe Finder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Recipe Finder App**, a React-based application for exploring and managing your favorite recipes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **🔍 Search Recipes**:  
+  Use the search bar to find recipes by name. The search functionality includes a debounce feature to enhance performance.
 
-## Expanding the ESLint configuration
+- **📂 Filter by Category**:  
+  Filter recipes by categories to quickly find what you're looking for.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **📄 Pagination**:  
+  Browse recipes using a paginated view for a clean and organized experience.
 
-- Configure the top-level `parserOptions` property like this:
+- **🛒 Add to Cart**:  
+  Save your favorite recipes to a cart and view the combined list of ingredients and instructions.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tech Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Frontend**: React, TypeScript, React Router
+- **State Management**: React Query, React Hook State
+- **Styling**: CSS Modules
+- **API Integration**: [MealDB API](https://www.themealdb.com/api.php) for fetching recipes and categories
+- **Utilities**: Debounce for search optimization
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository.
+2. Install dependencies:
+   `npm install`
+3. Start the development server:
+   `npm run dev`
+4. Open the app in your browser at `http://localhost:5173`
+

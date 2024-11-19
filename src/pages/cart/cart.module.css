@@ -1,0 +1,86 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Рецепти - 2 частини, Інгредієнти - 1 частина */
+  gap: 20px;
+}
+
+.recipes {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.instructions {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ingredients {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.empty {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr; /* Одна колонка на маленьких екранах */
+  }
+
+  .ingredients {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipes {
+    gap: 10px;
+  }
+
+  .instructions,
+  .ingredients {
+    padding: 12px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+}
