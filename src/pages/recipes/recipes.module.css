@@ -13,3 +13,22 @@
   align-items: center;
   gap: 20px;
 }
+
+.filterContainer {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filterLabel {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.categoryFilter {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
