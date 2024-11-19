@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { Recipes } from "./pages/recipes/recipes";
@@ -10,13 +10,13 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter basename="/meal">
+      <HashRouter>
         <Routes>
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<Recipe />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
   );
 }
