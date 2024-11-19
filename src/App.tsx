@@ -10,7 +10,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/meal">
         <Routes>
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/recipes/:id" element={<Recipe />} />
