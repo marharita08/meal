@@ -1,19 +1,24 @@
-import { useState } from "react";
-
 import { useAllRecipes } from "./hooks/use-all-recipes.hook";
 import RecipeCard from "../../components/recipe-card/recipe-card";
 import { Loader } from "../../components/loader/loader";
 import { ErrorDisplay } from "../../components/error/error-display";
+import { Pagination } from "../../components/pagination/pagination";
+import { usePagination } from "./hooks/use-pagination.hook";
 import styles from "./recipes.module.css";
 
 const Recipes: React.FC = () => {
   const { data: recipes, isLoading, error } = useAllRecipes();
-  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedItems = recipes?.slice(startIndex, endIndex);
+  const {
+    paginatedItems,
+    totalPages,
+    currentPage,
+    goToNextPage,
+    goToPreviousPage,
+    goToPage,
+    visiblePages
+  } = usePagination(recipes, itemsPerPage);
 
   if (isLoading) {
     return <Loader />;
@@ -31,26 +36,16 @@ const Recipes: React.FC = () => {
         ))}
       </div>
 
-      {recipes && (
-        <div>
-          <button
-            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </button>
-          <span>Page {currentPage}</span>
-          <button
-            onClick={() =>
-              setCurrentPage(prev =>
-                endIndex < recipes.length ? prev + 1 : prev
-              )
-            }
-            disabled={endIndex >= recipes.length}
-          >
-            Next
-          </button>
-        </div>
+      {recipes && totalPages > 1 && (
+        <Pagination
+          visiblePages={visiblePages}
+          currentPage={currentPage}
+          onPageClick={goToPage}
+          onNextClick={goToNextPage}
+          onPreviousClick={goToPreviousPage}
+          isNextDisabled={currentPage === totalPages}
+          isPreviousDisabled={currentPage === 1}
+        />
       )}
     </div>
   );
